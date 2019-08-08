@@ -27,12 +27,58 @@
         $(".text_show").show();
 
       });
+
+
       $("#readme").click(function () {
 
         $(".text_show").toggle();
 
       });
+
+      $
+
     });
+function ValidateEmail(inputText)
+{
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(inputText.value.match(mailformat))
+{
+document.form1.text1.focus();
+return true;
+}
+else
+{
+alert("You have entered an invalid email address!");
+document.form1.text1.focus();
+return false;
+}
+}
+function validate_form()
+{
+  var str=" ";
+  var c=0;
+valid = true;
+if($('input[type=checkbox]:checked').length == 0)
+{
+  str+="ERROR! Please select at least one checkbox    ";
+  c++;
+    valid = false;
+}
+var e = document.getElementById("select");
+var strUser = e.options[e.selectedIndex].value;
+var strUser1 = e.options[e.selectedIndex].text;
+if(strUser==0)
+{
+  str+="and Please select a location";
+  c++;
+}
+if(c!=0)
+{
+alert(str);
+}
+return valid;
+}
+
   </script>
 
   <!--Link Tags for Stylesheet-->
@@ -43,6 +89,8 @@
 </head>
 
 <body>
+  <!--Skip to main content-->
+  <a href="#job description" class="skip_to_main"> Skip to main content</a>
   <!--Section1-->
   <!-- Navbar -->
   <div class="jumbotron text-center banner" style="height:700px;">
@@ -84,16 +132,39 @@
 
     <div class="container" style="padding: 100px 150px;">
       <p class="looking">I'm looking for...</p>
-      <form>
+      <form name="reg">  
         <div class="input-group">
           <label for="job description"></label>
-          <input type="email" class="form-control mb-2 mr-sm-5" name="job description" id="job description" placeholder="Enter a Job Description" required>
+          <input type="text" class="form-control mb-2 mr-sm-5" name="job description" id="job description" placeholder="Enter a Job Description" required>
             <div class="input-group-btn">
-            <button type="button" class="btn btn-danger">
+            <button type="button" class="btn btn-danger" id="submit"> 
               <i class="fas fa-search"></i> Search</button>
           </div>
         </div>
       </form>
+      <div class=" form-inline" style="padding:50px 90px;color: white;" >
+      <div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  <label class="form-check-label" for="inlineCheckbox1">Part Time</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+  <label class="form-check-label" for="inlineCheckbox2">Full Time/Casual/Freelance</label>
+</div>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Select Your Location
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Location1</a>
+    <a class="dropdown-item" href="#">Location2</a>
+    <a class="dropdown-item" href="#">Location3</a>
+  </div>
+</div>
+ <div class="p-3"><button type="submit" class="btn btn-danger"  name="submit" onclick="ValidateEmail(document.form1.email)">Submit
+   </div>
+ </button>
+</div>
     </div>
 
   </div>
@@ -121,14 +192,20 @@
   <div class="jumbotron text-center banner2" style="height:300px;">
     <div class="container" style="padding:50px 300px;">
       <p class="looking p-2" style="font-size:25px;color:black;">Subscribe to our job seeker mailing list</p>
-      <div class="border11">
-        <form>
+     
+        <form name="form1"> 
+          <div class="border11">
           <div class="input-group">
-            <input type="email" class="form-control mb-2 mr-sm-5 input_box" placeholder="Enter Your Email Address" required>
-            <i class="fas fa-envelope p-3"></i>
+            <input type="email" name="email" class="form-control mb-2 mr-sm-5 input_box" placeholder="Enter Your Email Address"  required>
+         <button type="submit"  name="submit" onclick="ValidateEmail(document.form1.email)">  
+            <i class="fas fa-envelope p-3"></i></button>
+        
           </div>
+          </div> 
+    
+            
         </form>
-      </div>
+     
     </div>
   </div>
 
